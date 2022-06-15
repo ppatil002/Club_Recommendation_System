@@ -8,9 +8,14 @@ import {
   Button,
 } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
+import { useHistory } from "react-router-dom";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
 import axios from "axios";
 
 const Login = () => {
+
+  const history = useHistory()
+
   const [username, setUsername] = useState("");
   const [mis, setMis] = useState("");
   const [password, setPassword] = useState("");
@@ -112,6 +117,19 @@ const Login = () => {
                 Login{" "}
               </Button>{" "}
             </Grid>{" "}
+
+            <Grid item xs={12} sm={12}>
+              <Button
+                color="primary"
+                startIcon={<HowToRegIcon />}
+                variant="outlined"
+                fullWidth
+                onClick={() => history.push("/register")}
+              >
+                Register{" "}
+              </Button>{" "}
+            </Grid>{" "}
+
           </Grid>{" "}
         </Paper>{" "}
       </Container>{" "}
