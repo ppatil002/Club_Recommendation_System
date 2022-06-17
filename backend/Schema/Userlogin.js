@@ -13,7 +13,23 @@ const userSchema = new mongoose.Schema({
       username: {
         required: true,
         type: String,
-  },
+      },
+      firstname: {
+        required: true,
+        type: String,
+      },
+      lastname: {
+        required: true,
+        type: String,    
+      },
+      year: {
+            required: true,
+            type: String,    
+      },
+      branch:{
+            required: true,
+            type: String,
+      }
 });
 
 //create model

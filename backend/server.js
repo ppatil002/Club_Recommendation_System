@@ -53,7 +53,25 @@ app.post("/userlogin", (req, res) => {
     });
   });
   
-  
+app.post("/register", (req,res) => {
+  const {mis, password, username, firstname, lastname, year, branch} = req.body
+  User.findOne({ mis : mis}, (err, user) => {
+    if(user) {
+      res.send({message: "User already registered"})
+    }
+    else{
+      const user = new User({mis, password, username, firstname, lastname, year, branch})
+      user.save(err => {
+        if(err){
+          res.send(err)
+        }
+        else{
+          res.send({message: "Successfully Registered"})
+        }
+      })
+    }
+  })
+})
 
 app.get("/", (req, res) => {
     res.send("This is Club Recommendation System app");

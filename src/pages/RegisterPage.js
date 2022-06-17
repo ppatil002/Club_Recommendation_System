@@ -17,13 +17,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+//import PasswordField from 'material-ui-password-field';
 
 const Register = () => {
-  const [branch, setBranch] = React.useState("");
-
-  const BranchSelection = (event) => {
-    setBranch(event.target.value);
-  };
 
   const history = useHistory();
 
@@ -33,6 +29,16 @@ const Register = () => {
   const [mis, setMis] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [year, setYear] = useState("");
+  const [branch, setBranch] = useState("");
+
+  const BranchSelection = (event) => {
+    setBranch(event.target.value);
+  };
+
+  const YearSelection = (event) => {
+    setYear(event.target.value);
+  }
 
   const verify = (e) => {
     e.preventDefault();
@@ -42,11 +48,11 @@ const Register = () => {
       username === "" ||
       mis === "" ||
       password === "" ||
-      confirmPassword === ""
+      confirmPassword === "" || year === "" || branch === ""
     ) {
       alert("Please enter all details");
     } else if (password !== confirmPassword) {
-      alert("Match not Matched");
+      alert("Password did not match");
     } else {
       var body = {
         firstname: firstname,
@@ -55,9 +61,11 @@ const Register = () => {
         mis: mis,
         password: password,
         confirmPassword: confirmPassword,
+        branch: branch,
+        year: year
       };
-      axios.post("http://localhost:9000/userlogin", body).then((res) => {
-        alert(lastname);
+      axios.post("http://localhost:9000/register", body).then((res) => {
+        alert(res.data.message);
       });
     }
   };
@@ -75,6 +83,8 @@ const Register = () => {
             </Typography>{" "}
           </center>{" "}
           <Grid container spacing={3}>
+
+            {/* Firstname TextField */}
             <Grid item xs={12} sm={12}>
               <TextField
                 required
@@ -87,6 +97,8 @@ const Register = () => {
                 onChange={(e) => setFirstname(e.target.value)}
               />{" "}
             </Grid>{" "}
+
+            {/* Lastname TextField */}
             <Grid item xs={12} sm={12}>
               <TextField
                 required
@@ -99,6 +111,8 @@ const Register = () => {
                 onChange={(e) => setLastname(e.target.value)}
               />{" "}
             </Grid>{" "}
+
+            {/* username TextField */}
             <Grid item xs={12} sm={12}>
               <TextField
                 required
@@ -112,7 +126,25 @@ const Register = () => {
               />{" "}
             </Grid>{" "}
 
+            {/* Year dropdown */}
+            <Grid item xs={12} sm={12}>
+              <FormControl fullWidth xs={12} sm={12}>
+                <InputLabel id="demo-simple-select-label">Year</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={year}
+                  label="Year"
+                  onChange={YearSelection}>
+                  <MenuItem value={"FY"}>FY</MenuItem>
+                  <MenuItem value={"SY"}>SY</MenuItem>
+                  <MenuItem value={"TY"}>TY</MenuItem>
+                  <MenuItem value={"B.Tech"}>B.Tech</MenuItem>
+                </Select>
+              </FormControl>
+              </Grid>
 
+            {/* Branch dropdown */}
             <Grid item xs={12} sm={12}>
               <FormControl fullWidth xs={12} sm={12}>
                 <InputLabel id="demo-simple-select-label">Branch</InputLabel>
@@ -122,18 +154,19 @@ const Register = () => {
                   value={branch}
                   label="Branch"
                   onChange={BranchSelection}>
-                  <MenuItem value={10}>Computer</MenuItem>
-                  <MenuItem value={20}>Civil</MenuItem>
-                  <MenuItem value={30}>Electronics</MenuItem>
-                  <MenuItem value={40}>Electrical</MenuItem>
-                  <MenuItem value={50}>Instumentation</MenuItem>
-                  <MenuItem value={60}>Mechanical</MenuItem>
-                  <MenuItem value={70}>Metalurgy</MenuItem>
-                  <MenuItem value={80}>Production</MenuItem>
+                  <MenuItem value={"Computer"}>Computer</MenuItem>
+                  <MenuItem value={"Civil"}>Civil</MenuItem>
+                  <MenuItem value={"Electronics"}>Electronics</MenuItem>
+                  <MenuItem value={"Electrical"}>Electrical</MenuItem>
+                  <MenuItem value={"Instrumentation"}>Instumentation</MenuItem>
+                  <MenuItem value={"Mechanical"}>Mechanical</MenuItem>
+                  <MenuItem value={"Metallurgy"}>Metallurgy</MenuItem>
+                  <MenuItem value={"Production"}>Production</MenuItem>
                 </Select>
               </FormControl>
               </Grid>
 
+            {/* mis TextField */}
             <Grid item xs={12} sm={12}>
               <TextField
                 required
@@ -146,6 +179,8 @@ const Register = () => {
                 onChange={(e) => setMis(e.target.value)}
               />{" "}
             </Grid>{" "}
+
+            {/* password textfield */}
             <Grid item xs={12} sm={12}>
               <TextField
                 required
@@ -158,6 +193,8 @@ const Register = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />{" "}
             </Grid>{" "}
+
+            {/* confirm password TextField */}
             <Grid item xs={12} sm={12}>
               <TextField
                 required
@@ -170,6 +207,20 @@ const Register = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />{" "}
             </Grid>{" "}
+
+            {/* Button Register*/}
+            <Grid item xs={12} sm={12}>
+              <Button
+                color="primary"
+                startIcon={<HowToRegIcon />}
+                variant="outlined"
+                fullWidth
+                onClick={verify}>
+                Register{" "}
+              </Button>{" "}
+            </Grid>{" "}
+
+            {/* Login button */}
             <Grid item xs={12} sm={12}>
               <Button
                 color="primary"
@@ -181,16 +232,7 @@ const Register = () => {
                 Login{" "}
               </Button>{" "}
             </Grid>{" "}
-            <Grid item xs={12} sm={12}>
-              <Button
-                color="primary"
-                startIcon={<HowToRegIcon />}
-                variant="outlined"
-                fullWidth
-                onClick={verify}>
-                Register{" "}
-              </Button>{" "}
-            </Grid>{" "}
+            
             
           </Grid>{" "}
         </Paper>{" "}
