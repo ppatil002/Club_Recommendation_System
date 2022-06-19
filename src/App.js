@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/RegisterPage";
 import StudentProfile from "./pages/studentProfile";
 import Layout from "./components/mentorDetails/Layout";
+import MentorLogin from "./pages/MentorLogin";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           <Route path="/mentorForm">
           {/* <Layout/> */}
             <Layout />
+          </Route>
+          <Route path="/mentorlogin">
+            <MentorLogin />
           </Route>
         </Switch>
       </Router>
