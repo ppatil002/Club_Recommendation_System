@@ -24,6 +24,39 @@ mongoose.connect(
 
 const User = require("./Schema/Userlogin");
 
+const MentorDetails = require("./Schema/Mentor");
+
+app.post("/mentorlogin",(req,res) => {
+  const { username, password} = req.body;
+
+  MentorDetails.findOne({username: username},(err, existingmentor) => {
+    if(existingmentor){
+      if(password == existingmentor.password){
+        let token;
+        try{
+          token = jwt.sign({ username: username}, "mentor_jwt_token",{ expiresIn: "1h"});
+        }
+        catch(err){
+          res.send(err);
+        }
+
+        res.send({
+          message: "Mentor Login Successful",
+          username: username,
+          token: token,
+          password: password,
+        });
+      }
+      else{
+        res.send({message:"incorrect credentials"});
+      }
+    }
+    else{
+      res.send({message:"No such mentor"});
+    }
+  })
+})
+
 app.post("/userlogin", (req, res) => {
     const { mis, password, username } = req.body;
   
