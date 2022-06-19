@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/RegisterPage";
 import StudentProfile from "./pages/studentProfile";
+import Layout from "./components/mentorDetails/Layout";
 
 function App() {
   return (
@@ -17,6 +18,13 @@ function App() {
           </Route>
           <Route path="/studentprofile">
             <StudentProfile />
+            {/* <BrowserRouter>
+              <Layout />
+            </BrowserRouter> */}
+          </Route>
+          <Route path="/mentorForm">
+          {/* <Layout/> */}
+            <Layout />
           </Route>
         </Switch>
       </Router>
