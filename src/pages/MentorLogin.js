@@ -14,6 +14,8 @@ import axios from "axios";
 
 const MentorLogin = () => {
 
+  localStorage.clear();
+
   const history = useHistory()
 
   const [username, setUsername] = useState("");
@@ -34,10 +36,10 @@ const MentorLogin = () => {
       .then((res) => {
         alert(res.data.message);
         if (res.data.message === "Mentor Login Successful") {
-          localStorage.setItem("Token", res.data.token);
-          localStorage.setItem("Mis", res.data.username);
-          localStorage.setItem("Password", res.data.password);
-          const token = localStorage.getItem("Token");
+          localStorage.setItem("MentorToken", res.data.token);
+          localStorage.setItem("MentorPassword", res.data.password);
+          localStorage.setItem("Mentorusername",res.data.username);
+          const token = localStorage.getItem("MentorToken");
           if (token) {
             alert("Login Successful");
           } else {
@@ -109,7 +111,7 @@ const MentorLogin = () => {
                 startIcon={<HowToRegIcon />}
                 variant="outlined"
                 fullWidth
-                onClick={() => history.push("/register")}
+                onClick={event =>  window.location.href='/mentorregistration'}
               >
                 Register - Mentor{" "}
               </Button>{" "}

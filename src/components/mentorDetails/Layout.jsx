@@ -6,6 +6,8 @@ import ResumeForm from './ResumeForm.jsx'
 
 export default function Layout() {
 
+  
+
   //basic details
   const [basic , setBasic] = useState({firstName:"",lastName:"",email:"",state:"",city:"",phone:""})
 
@@ -20,7 +22,6 @@ export default function Layout() {
 
   //experience
   const [experience , setExperience] = useState([{ExperienceTitle:"",ExperienceDes:""}]);
-
 
   return (
     <div sx={{}}>

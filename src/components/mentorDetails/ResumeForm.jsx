@@ -100,8 +100,8 @@ function ResumeForm({basic,setBasic,education,setEducation,skill,setSkill,workSa
 
     function handleExperience(i,e){
         const {name , value} = e.target;
-        workSample[i][name] = value;
-        setExperience([...workSample]);
+        experience[i][name] = value;
+        setExperience([...experience]);
     }
 
     function handleRemoveExperience(index){
@@ -116,6 +116,12 @@ function ResumeForm({basic,setBasic,education,setEducation,skill,setSkill,workSa
         setExperience([...experience,{ExperienceTitle:"",ExperienceDes:""}])
     }
 
+    
+
+const submit = (e) => {
+    e.preventDefault();
+    console.log(education,skill,workSample,experience);
+  }
     
   return (
     <Grid container spacing={2} sx={{mt:5,pb:10}}>
@@ -426,7 +432,7 @@ function ResumeForm({basic,setBasic,education,setEducation,skill,setSkill,workSa
 
             </Box>
 
-            <Button component={Link} to="/preview" fullWidth variant="contained" sx={{mt:5}} color="primary" >View Resume</Button>
+            <Button fullWidth variant="contained" sx={{mt:5}} color="primary" onClick={submit}>Submit</Button>
         </Grid>
     </Grid>
   )
