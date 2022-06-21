@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import * as yup from  "yup";
 import {useForm} from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
+import "./ResumeFormCheckbox.css";
 
 
 const schema = yup.object().shape({
@@ -22,6 +23,32 @@ const schema = yup.object().shape({
 
 
 function ResumeForm({basic,setBasic,education,setEducation,skill,setSkill,workSample,setWorkSample,experience,setExperience}) {
+
+    // State with list of all checked item
+  const [checked, setChecked] = useState([]);
+  const checkList = ["ASCI", "CSI", "SDS", "Veloci"];
+
+  // Add/Remove checked item from list
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
+
+  // Generate string of checked items
+  const checkedItems = checked.length
+    ? checked.reduce((total, item) => {
+        return total + ", " + item;
+      })
+    : "";
+
+  // Return classes based on whether item is checked
+  var isChecked = (item) =>
+    checked.includes(item) ? "checked-item" : "not-checked-item";
     
 
     const handleForm = (data) => {}
@@ -359,7 +386,7 @@ const submit = (e) => {
                                         <TextField
                                         label="Experience description"
                                         variant="filled"
-                                        name="ExperienceeDes"
+                                        name="ExperienceDes"
                                         multiline
                                         rows={4}
                                         onChange={(e)=>handleExperience(i,e)}
@@ -428,6 +455,27 @@ const submit = (e) => {
                     ))
                 }
                 <Button sx={{mt:2}} onClick={handleAddMoreWorkSample} color="success" variant="contained">Add More </Button>
+                
+
+            </Box>
+
+            <Box  elevation={elevationValue} component={Paper} sx={{mt:5,p:2 }}>
+                
+            <div className="checkList">
+                <div className="title">Your ClubsList:</div>
+                <div className="list-container">
+                {checkList.map((item, index) => (
+                    <div key={index}>
+                    <input value={item} type="checkbox" onChange={handleCheck} />
+                    <span className={isChecked(item)}>{item}</span>
+                    </div>
+                ))}
+                </div>
+            </div>
+
+            <div>
+                {`Items checked are: ${checkedItems}`}
+            </div>
                 
 
             </Box>
