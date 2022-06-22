@@ -124,7 +124,7 @@ const Login = () => {
                 startIcon={<HowToRegIcon />}
                 variant="outlined"
                 fullWidth
-                onClick={() => history.push("/register")}
+                onClick={event =>  window.location.href='/studentregister'}
               >
                 Register{" "}
               </Button>{" "}

@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {Link} from 'react-router-dom'
 import * as yup from  "yup";
 import {useForm} from 'react-hook-form';
+import axios from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import "./ResumeFormCheckbox.css";
 
@@ -147,7 +148,56 @@ function ResumeForm({basic,setBasic,education,setEducation,skill,setSkill,workSa
 
 const submit = (e) => {
     e.preventDefault();
-    console.log(education,skill,workSample,experience);
+
+    var firstname = localStorage.getItem("Mentorfname");
+    var lastname = localStorage.getItem("Mentorlname");
+    var username = localStorage.getItem("Mentoruname");
+    var password = localStorage.getItem("Mentorpwd");
+    var branch = localStorage.getItem("Mentorbranch");
+    var year = localStorage.getItem("Mentoryear");
+    var email = basic.email;
+    var city = basic.city;
+    var state = basic.state;
+    var contactno = basic.phone;
+    const skills = [...skill];
+    const clubs = [...checked];
+    const work = [...workSample];
+
+    if(firstname === "" || lastname === "" || username === "" ||
+    password === "" || branch === "" || year === "" || email === "" 
+    || city === "" || state === "" || contactno === "" || skills.length === 0
+    || clubs.length === 0 || experience.length === 0 || education.length === 0 || work.length === 0){
+        alert("Please enter all details");
+    }
+    else{
+        var body = {
+            firstname : firstname,
+            lastname : lastname,
+            username : username,
+            password: password,
+            branch : branch,
+            year : year,
+            email : email,
+            city : city,
+            state: state,
+            contactno : contactno,
+            skills : skills,
+            clubs : clubs,
+            work : work,
+            education : education,
+            experience : experience,
+        };
+        axios.post("http://localhost:9000/mentorregister", body).then((res) => {
+            alert(res.data.message);
+            if(res.data.message==="Mentor Successfully registered"){
+                localStorage.clear();
+                window.location.href = "/mentorlogin";
+            }
+            
+          });
+    }
+
+    
   }
     
   return (
@@ -167,7 +217,8 @@ const submit = (e) => {
                                 name="firstName"
                                 variant="filled"
                                 onChange={(e)=>setBasic({...basic,firstName:e.target.value})}
-                                value={basic.firstName}
+                                value={localStorage.getItem("Mentorfname")}
+                                disabled={true}
                                 />
                             </FormControl>
                         </Grid>
@@ -179,7 +230,8 @@ const submit = (e) => {
                                 name="lastName"
                                 variant="filled"
                                 onChange={(e)=>setBasic({...basic,lastName:e.target.value})}
-                                value={basic.lastName}
+                                value={localStorage.getItem("Mentorlname")}
+                                disabled={true}
                                 />
                             </FormControl>
                         </Grid>

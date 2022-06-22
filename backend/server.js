@@ -106,6 +106,26 @@ app.post("/register", (req,res) => {
   })
 })
 
+app.post("/mentorregister",(req,res) => {
+  const {password,username,firstname,city,email,state,lastname,year,branch,education,experience,skills,clubs,contactno,work} = req.body
+  MentorDetails.findOne({username:username},(err,mentor) => {
+    if(mentor){
+      res.send({message:"Mentor already registered"})
+    }
+    else{
+      const mentor = new MentorDetails({password,username,firstname,city,email,state,lastname,year,branch,education,experience,skills,clubs,contactno,work})
+      mentor.save(err => {
+        if(err){
+          res.send(err)
+        }
+        else{
+          res.send({message:"Mentor Successfully registered"})
+        }
+      })
+    }
+  })
+})
+
 app.get("/", (req, res) => {
     res.send("This is Club Recommendation System app");
 });

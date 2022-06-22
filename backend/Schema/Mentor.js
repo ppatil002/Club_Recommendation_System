@@ -14,6 +14,22 @@ const mentorSchema = new mongoose.Schema({
         required: true,
         type: String,
       },
+      city:{
+        required: true,
+        type: String,
+      },
+      email:{
+        required:true,
+        type:String,
+      },
+      contactno:{
+        required:true,
+        type:String,
+      },
+      state:{
+        required:true,
+        type:String,
+      },
       lastname: {
         required: true,
         type: String,    
@@ -35,6 +51,14 @@ const mentorSchema = new mongoose.Schema({
         type: Array,
       },
       skills:{
+        required: true,
+        type: Array,
+      },
+      clubs:{
+        required: true,
+        type: Array,
+      },
+      work:{
         required: true,
         type: Array,
       },

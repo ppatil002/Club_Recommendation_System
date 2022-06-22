@@ -1,11 +1,12 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/RegisterPage";
 import StudentProfile from "./pages/studentProfile";
 import Layout from "./components/mentorDetails/Layout";
 import MentorLogin from "./pages/MentorLogin";
 import MentorRegister from "./pages/MentorRegistration";
+import WelcomePage from "./pages/Welcome";
 
 function App() {
   return (
@@ -13,9 +14,12 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
+            <WelcomePage />
+          </Route>
+          <Route path="/studentlogin">
             <Login />
           </Route>
-          <Route path="/register">
+          <Route path="/studentregister">
             <Register />
           </Route>
           <Route path="/studentprofile">
@@ -34,6 +38,7 @@ function App() {
           <Route path="/mentorregistration">
             <MentorRegister />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </Router>
     </div>
