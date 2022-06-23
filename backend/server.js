@@ -29,7 +29,7 @@ const MentorDetails = require("./Schema/Mentor");
 const Club = require("./Schema/Clubs");
 
 app.post("/clubdetails",(req,res) => {
-  const {name,information} = req.body;
+  const {name,information,why} = req.body;
 
   Club.findOne({ name : name}, (err, user) => {
     if(user) {
