@@ -57,6 +57,13 @@ app.post("/mentorlogin",(req,res) => {
   })
 })
 
+//For getting list of all mentors
+app.get("/mentorlist",(req,res) => {
+  MentorDetails.find()
+   .then((mentor) => res.json(mentor))
+   .catch((err) => res.status(400).res.json(`Error:${err}`))
+})
+
 app.post("/userlogin", (req, res) => {
     const { mis, password, username } = req.body;
   
@@ -106,14 +113,28 @@ app.post("/register", (req,res) => {
   })
 })
 
+app.put("/updatementorrr", (req, res) => {
+  const {username,requestsreceived} = req.body
+  var myquery = {username:username}
+  var newvalues = {$set:{requestsreceived:requestsreceived}}
+  MentorDetails.updateOne(myquery, newvalues,(err,item) => {
+    if(err){
+      res.send({message:"Error"});
+    }
+    else{
+      res.send({message:"Request sent successfully !"})
+    }
+  })
+});
+
 app.post("/mentorregister",(req,res) => {
-  const {password,username,firstname,city,email,state,lastname,year,branch,education,experience,skills,clubs,contactno,work} = req.body
+  const {password,username,firstname,city,email,state,lastname,year,branch,education,experience,skills,clubs,contactno,work,requestsreceived,requestsaccepted} = req.body
   MentorDetails.findOne({username:username},(err,mentor) => {
     if(mentor){
       res.send({message:"Mentor already registered"})
     }
     else{
-      const mentor = new MentorDetails({password,username,firstname,city,email,state,lastname,year,branch,education,experience,skills,clubs,contactno,work})
+      const mentor = new MentorDetails({password,username,firstname,city,email,state,lastname,year,branch,education,experience,skills,clubs,contactno,work,requestsreceived,requestsaccepted})
       mentor.save(err => {
         if(err){
           res.send(err)

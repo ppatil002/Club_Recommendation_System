@@ -62,6 +62,12 @@ const mentorSchema = new mongoose.Schema({
         required: true,
         type: Array,
       },
+      requestsreceived:{
+        type: Array,
+      },
+      requestsaccepted:{
+        type:Array,
+      },
 });
 
 //create model
