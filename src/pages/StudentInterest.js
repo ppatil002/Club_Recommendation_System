@@ -17,6 +17,7 @@ import Switch from "@mui/material/Switch";
 import Checkbox from "@mui/material/Checkbox";
 import { Paper } from "@material-ui/core";
 import { pink } from "@mui/material/colors";
+import DrawerAppBar from "../components/Navbar/Navbar";
 
 
 const labels = {
@@ -147,6 +148,7 @@ const StudentInterest = () => {
 
   return (
     <>
+    <DrawerAppBar />
       <h1>Interest Form</h1>
       <div className={classes.root}>
         <Box component="fieldset" mb={3} borderColor="transparent">

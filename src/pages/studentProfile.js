@@ -19,6 +19,7 @@ import {
   Grid,
 } from "@mui/material";
 import StudentNavbar from "../components/StudentNavbar";
+import DrawerAppBar from "../components/Navbar/Navbar";
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -58,7 +59,7 @@ const StudentProfile = () => {
 
   return (
     <>
-    <StudentNavbar />
+    <DrawerAppBar />
     <Container  style={{ marginTop: "55px" }}>
       <Grid container style={{ marginTop: "10px" }}>
         {mentorlist.length > 0 ? (

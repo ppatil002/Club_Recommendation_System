@@ -13,6 +13,8 @@ import MentorLogin from "./pages/MentorLogin";
 import MentorRegister from "./pages/MentorRegistration";
 import WelcomePage from "./pages/Welcome";
 import StudentInterest from "./pages/StudentInterest";
+import NavBar from "./components/Navbar/Navbar";
+import PersonalForm from "./pages/Student/PersonalForm";
 
 function App() {
 
@@ -81,6 +83,9 @@ function App() {
       <Switch>
       <Route exact path="/">
             <WelcomePage />
+          </Route>
+          <Route path="/studentpersonalform">
+            <PersonalForm />
           </Route>
           <Route path="/studentlogin">
             <Login />
