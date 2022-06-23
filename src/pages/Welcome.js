@@ -11,6 +11,8 @@ import {
 
 const WelcomePage = () => {
 
+  localStorage.clear();
+
   return (
     <>
         <h1>Welcome Page</h1>

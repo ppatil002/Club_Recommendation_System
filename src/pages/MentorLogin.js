@@ -39,8 +39,8 @@ const MentorLogin = () => {
           localStorage.setItem("MentorToken", res.data.token);
           localStorage.setItem("MentorPassword", res.data.password);
           localStorage.setItem("Mentorusername",res.data.username);
-          const token = localStorage.getItem("MentorToken");
-          if (token) {
+          const mentortoken = localStorage.getItem("MentorToken");
+          if (mentortoken) {
             alert("Login Successful");
           } else {
             alert("Login failed try after sometime");

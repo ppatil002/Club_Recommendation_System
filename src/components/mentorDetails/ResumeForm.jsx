@@ -29,6 +29,9 @@ function ResumeForm({basic,setBasic,education,setEducation,skill,setSkill,workSa
   const [checked, setChecked] = useState([]);
   const checkList = ["ASCI", "CSI", "SDS", "Veloci"];
 
+  const [requestsreceived,setRequestsreceived] = useState([]);
+  const [requestsaccepted,setRequestsaccepted] = useState([]);
+
   // Add/Remove checked item from list
   const handleCheck = (event) => {
     var updatedList = [...checked];
@@ -186,6 +189,8 @@ const submit = (e) => {
             work : work,
             education : education,
             experience : experience,
+            requestsaccepted : requestsaccepted,
+            requestsreceived : requestsreceived,
         };
         axios.post("http://localhost:9000/mentorregister", body).then((res) => {
             alert(res.data.message);

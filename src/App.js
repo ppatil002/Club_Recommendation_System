@@ -9,11 +9,71 @@ import MentorRegister from "./pages/MentorRegistration";
 import WelcomePage from "./pages/Welcome";
 
 function App() {
-  return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route exact path="/">
+
+  const mentortoken = localStorage.getItem("MentorToken");
+  const studenttoken = localStorage.getItem("StudentToken");
+
+  let routes;
+
+  if(!mentortoken && !studenttoken){
+    routes = (
+      <Switch>
+      <Route exact path="/">
+            <WelcomePage />
+          </Route>
+          <Route path="/studentlogin">
+            <Login />
+          </Route>
+          <Route path="/studentregister">
+            <Register />
+          </Route>
+          <Route path="/mentorForm">
+          {/* <Layout/> */}
+            <Layout />
+          </Route>
+          <Route path="/mentorlogin">
+            <MentorLogin />
+          </Route>
+          <Route path="/mentorregistration">
+            <MentorRegister />
+          </Route>
+          <Redirect to="/" />
+    </Switch>
+    )
+    
+  }
+
+  else if(mentortoken && !studenttoken){
+    routes = (
+      <Switch>
+      <Route exact path="/">
+            <WelcomePage />
+          </Route>
+          <Route path="/studentlogin">
+            <Login />
+          </Route>
+          <Route path="/studentregister">
+            <Register />
+          </Route>
+          <Route path="/mentorForm">
+          {/* <Layout/> */}
+            <Layout />
+          </Route>
+          <Route path="/mentorlogin">
+            <MentorLogin />
+          </Route>
+          <Route path="/mentorregistration">
+            <MentorRegister />
+          </Route>
+          <Redirect to="/" />
+    </Switch>
+    )
+    
+  }
+  else if(!mentortoken && studenttoken){
+    routes = (
+      <Switch>
+      <Route exact path="/">
             <WelcomePage />
           </Route>
           <Route path="/studentlogin">
@@ -39,7 +99,15 @@ function App() {
             <MentorRegister />
           </Route>
           <Redirect to="/" />
-        </Switch>
+    </Switch>
+    )
+    
+  }
+
+  return (
+    <div className="App">
+      <Router>
+      <main>{routes}</main>
       </Router>
     </div>
   );

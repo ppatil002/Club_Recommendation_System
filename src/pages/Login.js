@@ -36,12 +36,12 @@ const Login = () => {
       .then((res) => {
         alert(res.data.message);
         if (res.data.message === "Login successful !!") {
-          localStorage.setItem("Token", res.data.token);
+          localStorage.setItem("StudentToken", res.data.token);
           localStorage.setItem("Mis", res.data.mis);
           localStorage.setItem("Password", res.data.password);
-          const token = localStorage.getItem("Token");
-          if (token) {
-            alert("Login Successful");
+          const studenttoken = localStorage.getItem("StudentToken");
+          if (studenttoken) {
+            window.location.href='/studentprofile';
           } else {
             alert("Login failed try after sometime");
           }
