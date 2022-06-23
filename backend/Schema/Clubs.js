@@ -9,6 +9,10 @@ const clubSchema = new mongoose.Schema({
       information:{
         required:true,
         type:String,
+      },
+      why:{
+        required:true,
+        type:String,
       }
 });
 
