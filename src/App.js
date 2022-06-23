@@ -85,6 +85,9 @@ function App() {
           <Route path="/studentlogin">
             <Login />
           </Route>
+          <Route path="/studentInterest">
+            <StudentInterest/>
+          </Route>
           <Route path="/studentregister">
             <Register />
           </Route>
