@@ -16,6 +16,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import "../styles/mentorlogin.css";
+
 //import PasswordField from 'material-ui-password-field';
 
 const MentorRegister = () => {
@@ -73,7 +75,8 @@ const MentorRegister = () => {
 
   return (
     <>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+    <div className="mentorlogin">
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="boxbackground">
         <Paper
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
@@ -222,6 +225,7 @@ const MentorRegister = () => {
           </Grid>{" "}
         </Paper>{" "}
       </Container>{" "}
+      </div>
     </>
   );
 };

@@ -36,7 +36,7 @@ app.post("/clubdetails",(req,res) => {
       res.send({message: "Already added"})
     }
     else{
-      const user = new Club({name,information})
+      const user = new Club({name,information,why})
       user.save(err => {
         if(err){
           res.send(err)
