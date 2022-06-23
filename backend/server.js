@@ -26,6 +26,29 @@ const User = require("./Schema/Userlogin");
 
 const MentorDetails = require("./Schema/Mentor");
 
+const Club = require("./Schema/Clubs");
+
+app.post("/clubdetails",(req,res) => {
+  const {name,information} = req.body;
+
+  Club.findOne({ name : name}, (err, user) => {
+    if(user) {
+      res.send({message: "Already added"})
+    }
+    else{
+      const user = new Club({name,information})
+      user.save(err => {
+        if(err){
+          res.send(err)
+        }
+        else{
+          res.send({message: "Successfully Added"})
+        }
+      })
+    }
+  })
+})
+
 app.post("/mentorlogin",(req,res) => {
   const { username, password} = req.body;
 
