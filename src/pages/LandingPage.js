@@ -1,10 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Typist from "react-typist";
 import Fade from "react-reveal/Fade";
 import { Button, Grid } from "@material-ui/core";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
 import "../styles/landingPage.css";
+
+var message = "This will be animated after first sentence is complete";
 
 const LandingPage = () => {
   let cursor = {
@@ -24,35 +26,27 @@ const LandingPage = () => {
             marginLeft: "1em",
             marginRight: "1em",
             textAlign: "center",
-          }}
-        >
-
-<Typist>
-  <span className="my-custom-class"> First Sentence </span>
-  <br />
-  <div className="container">
-    <p> This will be animated after first sentence is complete </p>
-    <MyComponent prop1="val1"> More text. </MyComponent>
-  </div>
-  Final sentence
-</Typist>
-
-            <div>
+          }}>
+          <div>
             {/* <h1 style={{ paddingBottom: 15 }} className="heading"> */}
-                Hi There!{" "}
-                <span className="wave" role="img" aria-labelledby="wave">
-                  👋🏻
-                </span>
-            </div>
-          <br />
-          <br />
-          <Fade bottom delay={11000}>
-            Welcome to !
+            <h2 >Hi There!{"👋🏻"}</h2>
+          </div>
+          <Fade above delay={1000}>
+            New to COEP!
+          </Fade>
+          <Fade above delay={1500}>
+            Confused about Clubs!<br/>
+            Want to build your Network
+          </Fade>
+          <Fade bottom delay={2200}>
+            Welcome to UniConnect!
           </Fade>
           <br />
-          <Fade bottom delay={12000}>
-            <Link to="/home" style={{ textDecoration: "none" }}>
+          <br />
+          <Fade bottom delay={2600}>
+            <Link  style={{ textDecoration: "none" }}>
               <Button
+              onClick={event =>  window.location.href='/home'}
                 endIcon={<ArrowForwardIcon />}
                 size="large"
                 variant="contained"
@@ -61,8 +55,7 @@ const LandingPage = () => {
                   color: "white",
                   fontFamily: "Rubik",
                   fontSize: "0.5em",
-                }}
-              >
+                }}>
                 Learn more
               </Button>
             </Link>

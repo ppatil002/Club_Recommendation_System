@@ -14,6 +14,7 @@ import MentorRegister from "./pages/MentorRegistration";
 import WelcomePage from "./pages/Welcome";
 import StudentInterest from "./pages/StudentInterest";
 import LandingPage from "./pages/LandingPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const mentortoken = localStorage.getItem("MentorToken");
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/landingPage">
           <LandingPage/>
+        </Route>
+        <Route path="/home">
+          <HomePage/>
         </Route>
         <Route path="/studentlogin">
           <Login />

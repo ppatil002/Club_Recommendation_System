@@ -11,6 +11,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useHistory } from "react-router-dom";
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import axios from "axios";
+import "../styles/mentorlogin.css";
 
 const Login = () => {
 
@@ -55,7 +56,8 @@ const Login = () => {
 
   return (
     <>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+    <div className="mentorlogin">
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="boxbackground">
         <Paper
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
@@ -133,6 +135,7 @@ const Login = () => {
           </Grid>{" "}
         </Paper>{" "}
       </Container>{" "}
+      </div>
     </>
   );
 };

@@ -11,6 +11,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useHistory } from "react-router-dom";
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import axios from "axios";
+import "../styles/mentorlogin.css";
 
 const MentorLogin = () => {
 
@@ -55,17 +56,18 @@ const MentorLogin = () => {
 
   return (
     <>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+    <div className="mentorlogin">
+      <Container component="main" maxWidth="sm" sx={{ mb: 4}} className="boxbackground">
         <Paper
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
-          <center>
-            <Typography variant="h6" gutterBottom>
+          <center   >
+            <Typography variant="h6" gutterBottom >
               Mentor Login Page{" "}
             </Typography>{" "}
           </center>{" "}
-          <Grid container spacing={3}>
+          <Grid container spacing={3} > 
             <Grid item xs={12} sm={12}>
               <TextField
                 required
@@ -82,6 +84,7 @@ const MentorLogin = () => {
             <Grid item xs={12} sm={12}>
               <TextField
                 required
+                type="password"
                 id="password"
                 name="password"
                 label="Password"
@@ -120,6 +123,7 @@ const MentorLogin = () => {
           </Grid>{" "}
         </Paper>{" "}
       </Container>{" "}
+      </div>
     </>
   );
 };
