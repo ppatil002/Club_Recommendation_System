@@ -62,14 +62,18 @@ export default function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Club Recommender System
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
+          <Button  sx={{ color: '#fff' }} onClick={event =>  window.location.href='/studentpersonalform'}>
+                Interest Form
               </Button>
-            ))}
+              <Button  sx={{ color: '#fff' }}  onClick={event =>  window.location.href='/clubs-selected'}>
+                Clubs Recommended
+              </Button>
+              <Button  sx={{ color: '#fff' }}  onClick={event =>  window.location.href='/mentor-recommendation'}>
+                Mentors Recommended
+              </Button>
           </Box>
         </Toolbar>
       </AppBar>

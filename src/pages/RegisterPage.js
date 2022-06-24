@@ -68,6 +68,7 @@ const Register = () => {
       };
       axios.post("http://localhost:9000/register", body).then((res) => {
         alert(res.data.message);
+        window.location.href = "/studentlogin"
       });
     }
   };

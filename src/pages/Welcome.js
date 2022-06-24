@@ -90,11 +90,10 @@ const WelcomePage = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            MENTOR
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            By Registering as a mentor, you can guide your juniors !
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -116,11 +115,10 @@ const WelcomePage = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            STUDENT
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            Register from here and you club recommendations will be displayed!
           </Typography>
         </CardContent>
       </CardActionArea>

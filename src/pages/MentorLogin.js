@@ -43,6 +43,7 @@ const MentorLogin = () => {
           const mentortoken = localStorage.getItem("MentorToken");
           if (mentortoken) {
             alert("Login Successful");
+            window.location.href ="/mrr"
           } else {
             alert("Login failed try after sometime");
           }

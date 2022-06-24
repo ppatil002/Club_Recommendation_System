@@ -16,6 +16,8 @@ import {
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
+import InterestsIcon from '@mui/icons-material/Interests';
+import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
 
 const theme = createMuiTheme({
   typography: {
@@ -39,7 +41,7 @@ const HomePage = () => {
                 fontWeight: "bold",
                 fontSize: "1em",
               }}>
-              UniConnect
+              Club Recommender
             </Link>
             <Link
               style={{
@@ -87,12 +89,12 @@ const HomePage = () => {
                 </Grid>
                 <Grid item lg={2}>
                   <Fade bottom delay={1000}>
-                    {/* <PollOutlined
+                    <InterestsIcon
                       style={{
                         fontSize: "3.5rem",
                         justifyContent: "center",
                       }}
-                    /> */}
+                    />
                     <Typography
                       style={{
                         marginBottom: "0.15rem",
@@ -106,12 +108,12 @@ const HomePage = () => {
                 </Grid>
                 <Grid item lg={2}>
                   <Fade bottom delay={1000}>
-                    {/* <DoubleArrow
+                    <PlayCircleFilledIcon
                       style={{
                         fontSize: "3.5rem",
                         justifyContent: "center",
                       }}
-                    /> */}
+                    />
                     <Typography
                       style={{
                         fontWeight: "bold",
@@ -137,7 +139,7 @@ const HomePage = () => {
                       fontFamily: "Rubik",
                       fontWeight: "bold",
                       fontSize: "0.75em",
-                    }}>
+                    }} onClick={event =>  window.location.href='/welcome'}>
                     Get Started!
                   </Button>
                 </Link>

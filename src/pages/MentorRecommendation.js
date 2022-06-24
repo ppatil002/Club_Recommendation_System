@@ -12,11 +12,23 @@ import {
     Container,
   } from "@mui/material";
   import axios from "axios";
+import MentorCard from './MentorCard';
+import ProfileCard from '../components/profilecard';
 
 const MentorRecommendation = () => {
+
+    const [mentorlist, setMentorlist] = useState([]);
+    const [selmentor,setSelmentor] = useState([]);
+
+    useEffect(() => {
+        axios
+        .get("http://localhost:9000/mentorlist")
+        .then((res) => setMentorlist(res.data))
+          .catch((error) => console.log(error));
+      },[]);
+
     var abc = localStorage.getItem("clubs")
   var clubs = JSON.parse(localStorage.getItem("clubs"));
-  console.log(abc,clubs)
     return (
         <>
         <DrawerAppBar />
@@ -25,6 +37,43 @@ const MentorRecommendation = () => {
             <Typography sx={{ fontSize: 30,marginBottom:"40px" }}>
               List of mentors you can contact
             </Typography>
+            <Box sx={{ paddingX: 20 }} >
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            {mentorlist.length > 0 ? (
+          mentorlist.map((items) => {
+            items.clubs.map((ind)=>{
+                if(abc.includes(ind) && !selmentor.includes(items.username)){
+                    console.log(selmentor)
+                    selmentor.push(items.username)
+                }
+            })
+          })
+        ) : (
+          <>
+            <div></div>
+          </>
+        )}
+            </Grid>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            {mentorlist.length > 0 ? (
+          mentorlist.map((items) => {
+            if(selmentor.includes(items.username)){
+                return(
+                    <>
+                    <Grid item xs={2} sm={4} md={4}>
+                <ProfileCard info={items}/>
+                  </Grid>
+                    </>
+                )
+            }
+          })
+        ) : (
+          <>
+            <div>No passes</div>
+          </>
+        )}
+            </Grid>
+            </Box>
     
           </Box>
           </>

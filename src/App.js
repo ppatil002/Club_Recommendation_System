@@ -31,11 +31,12 @@ function App() {
   if (!mentortoken && !studenttoken) {
     routes = (
       <Switch>
+        
         <Route exact path="/">
-          <WelcomePage />
-        </Route>
-        <Route path="/landingPage">
           <LandingPage/>
+        </Route>
+        <Route path="/welcome">
+          <WelcomePage />
         </Route>
         <Route path="/home">
           <HomePage/>

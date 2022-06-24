@@ -18,6 +18,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Divider from "@mui/material/Divider";
 import TextField from "@mui/material/TextField";
 import DialogContent from "@mui/material/DialogContent";
+
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import axios from "axios";
 
 const ProfileCard = (props) => {
@@ -35,6 +38,19 @@ const ProfileCard = (props) => {
   const handleClosedetails = () => {
     setOpendetails(false);
   };
+
+  const handleClickOpen1 = () => {
+    setOpen1(true);
+  };
+
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+
+  const [open1, setOpen1] = React.useState(false);
+  const theme = useTheme();
+  const [a,setA] = React.useState(0);
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const descriptionElementRef = React.useRef(null);
   React.useEffect(() => {
@@ -59,8 +75,8 @@ const ProfileCard = (props) => {
   };
 
   const sendRequest = () => {
-    if(passwordentered===studentpwd){
-        const newrequest = [...props.requestsreceived];
+    if(1){
+        const newrequest = [...props.info.requestsreceived];
         if(newrequest.includes(studentmis)){
             alert("Request already sent");
         }
@@ -68,7 +84,7 @@ const ProfileCard = (props) => {
             newrequest.push(studentmis);
             var body = {
                 requestsreceived: newrequest,
-                username: props.username
+                username: props.info.username
             }
             axios
             .put("http://localhost:9000/updatementorrr",body)
@@ -84,89 +100,72 @@ const ProfileCard = (props) => {
     }
   }
   return (
-    <Grid
-      item
-      lg={4}
-      sm={6}
-      md={6}
-      xs={12}
-      style={{ justifyContent: "center" }}
-    >
-      <Card
-        style={{
-          maxWidth: "90vw",
-          marginBottom: "1em",
-          paddingBottom: "0.5em",
-          marginLeft: "2vw",
-          marginRight: "2vw",
-          marginTop: "25px",
-        }}
-      >
-        <CardActionArea onClick={handleClickOpen}>
-          <CardMedia
-            component="img"
-            height="200"
-            image="https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105__480.png"
-            alt="image"
-          />
-          <CardContent style={{ backgroundColor: "#D1D7E0" }}>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="div"
-              style={{ marginBottom: "10px", color: "#2D283E" }}
-            >
-              {props.username}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              component="div"
-              style={{ color: "#2D283E" }}
-            >
-              {"ugyfy"}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              component="div"
-              style={{ color: "#2D283E" }}
-            >
-              {"wiohie"}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions style={{ backgroundColor: "#D1D7E0" }}>
-          <div
-            style={{
-              flex: "1",
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              size="small"
-              style={{
-                backgroundColor: "#2D283E",
-                color: "#D1D7E0",
-                margin: "10px",
-              }}
-              onClick={handleClickOpen}
-            >
-              Send Request
-            </Button>
-            <Button
-              size="small"
-              style={{
-                backgroundColor: "#2D283E",
-                color: "#D1D7E0",
-                margin: "10px",
-              }}
-              onClick={handleClickOpendetails("paper")}
-            >
-              View Details
-            </Button>
-          </div>
+    <>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardMedia
+          component="img"
+          height="140"
+          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSafHzR_gbgOTm7BSKDHZrUTh1OgfNLb0RaOw&usqp=CAU"
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            {props.info.firstname} {props.info.lastname}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {props.info.username}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" onClick={handleClickOpen1}>
+            Show More Details
+          </Button>
+          <Button size="small" onClick={handleClickOpen}>
+            Send Request
+          </Button>
         </CardActions>
       </Card>
+
+      <Dialog
+        fullScreen={fullScreen}
+        open={open1}
+        onClose={handleClose1}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <DialogTitle id="responsive-dialog-title">
+        {props.info.firstname} {props.info.lastname}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Branch : {props.info.branch}, Year : {props.info.year}
+          </DialogContentText>
+          <DialogContentText>
+            From : {props.info.city}, {props.info.state}
+          </DialogContentText>
+          <DialogContentText>
+            EDUCATION DETAILS
+          </DialogContentText>
+          <DialogContentText>
+            {
+                props.info.education.map((items,index) => {
+                    return(
+                        <>
+                        <DialogContentText>
+                            {index+1} Education Name: {items.educationName}, Education From:{items.educationFrom
+}
+                        </DialogContentText>
+                        </>
+                    )
+                })
+            }
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={handleClose1}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
 
       {/* Dialog for asking password again */}
       <Dialog open={open} onClose={handleClose}>
@@ -193,100 +192,7 @@ const ProfileCard = (props) => {
         </DialogActions>
       </Dialog>
       {/* Dialog for password ends */}
-
-      <Dialog
-        open={opendetails}
-        onClose={handleClosedetails}
-        scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
-      >
-        <DialogTitle
-          id="scroll-dialog-title"
-          style={{
-            textAlign: "center",
-            backgroundColor: "#564F6f",
-            padding: "15px",
-            color: "#D1D7E0",
-          }}
-        >
-          EVENT DETAILS
-        </DialogTitle>
-        <Divider />
-        <DialogContentText
-          ref={descriptionElementRef}
-          tabIndex={-1}
-          style={{
-            backgroundColor: "#564F6f",
-            padding: "15px",
-            color: "#D1D7E0",
-          }}
-        >
-          Event : {"iuuh"}
-        </DialogContentText>
-        <Divider />
-        <DialogContentText
-          id="scroll-dialog-description"
-          ref={descriptionElementRef}
-          tabIndex={-1}
-          style={{
-            backgroundColor: "#564F6f",
-            padding: "15px",
-            color: "#D1D7E0",
-          }}
-        >
-          Description : {"uuhuh"}
-        </DialogContentText>
-        <Divider />
-        <DialogContentText
-          id="scroll-dialog-description"
-          ref={descriptionElementRef}
-          tabIndex={-1}
-          style={{
-            backgroundColor: "#564F6f",
-            padding: "15px",
-            color: "#D1D7E0",
-          }}
-        >
-          Date : {"ojjjjjjjj"}
-        </DialogContentText>
-        <Divider />
-        <DialogContentText
-          id="scroll-dialog-description"
-          ref={descriptionElementRef}
-          tabIndex={-1}
-          style={{
-            backgroundColor: "#564F6f",
-            padding: "15px",
-            color: "#D1D7E0",
-          }}
-        >
-          Time : {"pppppp"}
-        </DialogContentText>
-        <Divider />
-        <DialogContentText
-          id="scroll-dialog-description"
-          ref={descriptionElementRef}
-          tabIndex={-1}
-          style={{
-            backgroundColor: "#564F6f",
-            padding: "15px",
-            color: "#D1D7E0",
-          }}
-        >
-          Venue : {"oooo"}
-        </DialogContentText>
-        <Divider />
-        <DialogActions style={{ backgroundColor: "#564F6f" }}>
-          <Button
-            onClick={handleClosedetails}
-            style={{ backgroundColor: "#2D283E", color: "#D1D7E0" }}
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </Grid>
+      </>
   );
 };
 export default ProfileCard;

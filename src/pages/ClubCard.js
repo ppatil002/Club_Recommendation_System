@@ -69,7 +69,7 @@ const ClubCard = (props) => {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Use Google's location service?"}
+          Why Join
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -90,13 +90,10 @@ const ClubCard = (props) => {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Use Google's location service?"}
+          Click on Check Recommendations Button
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-            Dialog 2
           </DialogContentText>
         </DialogContent>
         <DialogActions>
