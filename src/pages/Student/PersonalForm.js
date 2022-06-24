@@ -142,11 +142,112 @@ const PersonalForm = () => {
 
   const classes = useStyles();
 
+  const [final, setFinal] = useState([])
+  const [portfolio, setPortfolio] = useState([])
+
   const submit = (e) => {
+    final.length = 0;
+    portfolio.length = 0;
     e.preventDefault();
     console.log(bloodquestion,orphanagequestion,management,acc,publicspeaking,vehicle,
       coding,space,research,writing,anc,cultural,civil,indoor,outdoor)
-    
+    if(bloodquestion>=4){
+      final.push("Spandan");
+    }
+    if(orphanagequestion>=4){
+      final.push("NSS");
+    }
+    if(management=="Yes"){
+      portfolio.push("Fests");
+      final.push("MindSpark");
+      final.push("Zest");
+      final.push("Impressions");
+    }
+    if(acc=="Yes"){
+      portfolio.push("Accounts and Documentation"); 
+    }
+    if(publicspeaking=="Yes"){
+      final.push("TEDX");
+      final.push("Debate club")
+    }
+    if(vehicle=="Bikes"){
+      final.push("Delta Club");
+    }
+    if(vehicle=="F1 Cars"){
+      final.push("Nemesis Racing");
+    }
+    if(vehicle=="Off-Road"){
+      final.push("Octane Racing");
+    }
+    if(vehicle=="Electric Cars"){
+      final.push("Velociracers")
+    }
+    if(coding>=4){
+      final.push("ASCI");
+      final.push("SDS");
+      final.push("CSI");
+      final.push("COEP Web Team");
+      portfolio.push("Web");
+    }
+    if(space=="Astronomical Phenomenon"){
+      final.push("Astronomy Club");
+    }
+    if(space=="Radio"){
+      final.push("HAM club");
+    }
+    if(space=="Satellites"){
+      final.push("Satellite club")
+    }
+    if(research>=4){
+      final.push("Mathematics club");
+      final.push("Science club");
+    }
+    if(writing>=4){
+      final.push("Abhiyanta");
+      final.push("Abhijaat");
+    }
+    if(anc=="Yes"){
+      final.push("AnC");
+      portfolio.push("Design");
+    }
+    if(cultural=="Yes"){
+      final.push("Cultural club");
+    }
+    if(civil=="Yes"){
+      final.push("Civil Services Aspirant's Club");
+      final.push("NCC");
+    }
+    if(indoor.chess){
+      final.push("Chess Club");
+    }
+    if(indoor.carrom){
+      final.push("Carrom Club");
+    }
+    if(indoor.yoga){
+      final.push("Yoga");
+    }
+    if(outdoor.cricket){
+      final.push("Cricket");
+    }
+    if(outdoor.football){
+      final.push("Football");
+    }
+    if(outdoor.basketball){
+      final.push("Basketball");
+    }
+    if(outdoor.fencing){
+      final.push("Fencing");
+    }
+    if(outdoor.boating){
+      final.push("Boat Club");
+      final.push("Regatta");
+    }
+    if(outdoor.athletics){
+      final.push("Athletics");
+    }
+    localStorage.setItem("clubs", JSON.stringify(final));
+    console.log(final,portfolio);
+    window.location.href = "/clubs-selected";
   };
 
   return (

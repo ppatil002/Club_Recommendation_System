@@ -17,6 +17,7 @@ import NavBar from "./components/Navbar/Navbar";
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import PersonalForm from "./pages/Student/PersonalForm";
+import ClubList from "./pages/ClubList";
 
 function App() {
   const mentortoken = localStorage.getItem("MentorToken");
@@ -116,6 +117,9 @@ function App() {
         </Route>
         <Route path="/studentpersonalform">
           <PersonalForm />
+        </Route>
+        <Route path="/clubs-selected">
+          <ClubList />
         </Route>
         <Redirect to="/" />
       </Switch>

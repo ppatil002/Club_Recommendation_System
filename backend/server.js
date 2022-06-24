@@ -87,6 +87,12 @@ app.get("/mentorlist",(req,res) => {
    .catch((err) => res.status(400).res.json(`Error:${err}`))
 })
 
+app.get("/clublist",(req,res) => {
+  Club.find()
+  .then((club) => res.json(club))
+   .catch((err) => res.status(400).res.json(`Error:${err}`))
+})
+
 app.post("/userlogin", (req, res) => {
     const { mis, password, username } = req.body;
   
