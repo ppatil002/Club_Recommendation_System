@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema({
       branch:{
             required: true,
             type: String,
+      },
+      requestssent:{
+            type: Array,
+      },
+      requestsmentoraccepted:{
+            type:Array,
       }
 });
 

@@ -11,7 +11,6 @@ import {
   import ProfileUi from 'react-profile-card';
   import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -20,7 +19,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { Button, CardActionArea, CardActions } from '@mui/material';
 import "../styles/welcome.css"
+import mentor from "../images/mentor.jpg"
+import student from "../images/student.jpg"
 
 const WelcomePage = () => {
   // const [state, setState] = React.useState({
@@ -72,7 +77,66 @@ const WelcomePage = () => {
       <div className="welcome">
         <h1>Welcome Page</h1>
 
-        <Grid item xs={12} sm={12}>
+        <Box sx={{paddingX:30}}>
+        <Grid container spacing={2}>
+        <Grid item xs={6} md={6}>
+        <Card sx={{ maxWidth: 600 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="400"
+          image={mentor}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Lizard
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary" onClick={event =>  window.location.href='/mentorlogin'}>
+          Mentor Login
+        </Button>
+      </CardActions>
+    </Card>
+    </Grid>
+    <Grid item xs={6} md={6}>
+        <Card sx={{ maxWidth: 600 }}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          height="400"
+          image={student}
+          alt="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Lizard
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Lizards are a widespread group of squamate reptiles, with over 6,000
+            species, ranging across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary" onClick={event =>  window.location.href='/studentlogin'}>
+          Student Login
+        </Button>
+      </CardActions>
+    </Card>
+    </Grid>
+          </Grid>
+        </Box>
+
+        
+
+        {/* <Grid item xs={12} sm={12}>
               <Button
                 color="primary"
                 startIcon={<HowToRegIcon />}
@@ -94,7 +158,7 @@ const WelcomePage = () => {
               >
                 Login - Student{" "}
               </Button>{" "}
-        </Grid>{" "}
+        </Grid>{" "} */}
 
 
         {/* <div>

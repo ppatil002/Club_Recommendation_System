@@ -18,6 +18,9 @@ import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import PersonalForm from "./pages/Student/PersonalForm";
 import ClubList from "./pages/ClubList";
+import MentorRequestsreceived from "./components/mentorDetails/RequestsReceived";
+import MentorRequestsaccepted from "./components/mentorDetails/RequestsAccepted";
+import MentorRecommendation from "./pages/MentorRecommendation";
 
 function App() {
   const mentortoken = localStorage.getItem("MentorToken");
@@ -78,6 +81,12 @@ function App() {
         <Route path="/mentorregistration">
           <MentorRegister />
         </Route>
+        <Route path="/mrr">
+          <MentorRequestsreceived />
+        </Route>
+        <Route path="/mra">
+          <MentorRequestsaccepted />
+        </Route>
         <Redirect to="/" />
       </Switch>
     );
@@ -120,6 +129,9 @@ function App() {
         </Route>
         <Route path="/clubs-selected">
           <ClubList />
+        </Route>
+        <Route path="/mentor-recommendation">
+          <MentorRecommendation />
         </Route>
         <Redirect to="/" />
       </Switch>

@@ -5,6 +5,7 @@ import DrawerAppBar from '../components/Navbar/Navbar';
 import Box from "@mui/material/Box";
 import Grid from "@material-ui/core/Grid";
 import Toolbar from "@mui/material/Toolbar";
+import Button from '@mui/material/Button';
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
     Container,
@@ -33,14 +34,19 @@ const ClubList = () => {
         <Typography sx={{ fontSize: 30,marginBottom:"40px" }}>
           List of selected Clubs According to your choices
         </Typography>
-        <Container  style={{ marginTop: "55px" }}>
-      <Grid container style={{ marginTop: "10px" }}>
+        <Box sx={{ paddingX: 20 }} >
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         {clublist.length > 0 ? (
           clublist.map((items) => {
             console.log(items)
             if (abc.includes(items.name)) {
               return (
+                <>
+                <Grid item xs={2} sm={4} md={4}>
                 <ClubCard info = {items}/>
+                  </Grid> 
+                </>
+                
               );
             }
           })
@@ -50,7 +56,10 @@ const ClubList = () => {
           </>
         )}
       </Grid>
-      </Container>
+      </Box>
+      <Button variant="contained" disableElevation onClick={event =>  window.location.href='/mentor-recommendation'}>
+     Check Recommendations
+    </Button>
 
       </Box>
       </>

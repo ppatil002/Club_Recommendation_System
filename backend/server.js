@@ -49,6 +49,41 @@ app.post("/clubdetails",(req,res) => {
   })
 })
 
+app.post("/mrr",(req,res) => {
+  const {username} = req.body
+  MentorDetails.findOne({username:username},(err,mentor) => {
+    if(mentor){
+      res.send({requestsreceived:mentor.requestsreceived,requestsaccepted:mentor.requestsaccepted})
+    }
+    else{
+      if(err){
+        res.send(err)
+      }
+      else{
+        res.send({message:"Error"})
+      }
+    }
+  })
+})
+
+app.post("/mra",(req,res) => {
+  const {username} = req.body
+  MentorDetails.findOne({username:username},(err,mentor) => {
+    if(mentor){
+      res.send({requestsaccepted:mentor.requestsaccepted})
+    }
+    else{
+      if(err){
+        res.send(err)
+      }
+      else{
+        res.send({message:"Error"})
+      }
+    }
+  })
+})
+
+
 app.post("/mentorlogin",(req,res) => {
   const { username, password} = req.body;
 
@@ -90,6 +125,12 @@ app.get("/mentorlist",(req,res) => {
 app.get("/clublist",(req,res) => {
   Club.find()
   .then((club) => res.json(club))
+   .catch((err) => res.status(400).res.json(`Error:${err}`))
+})
+
+app.get("/studentlist",(req,res) => {
+  User.find()
+  .then((user) => res.json(user))
    .catch((err) => res.status(400).res.json(`Error:${err}`))
 })
 
@@ -146,6 +187,20 @@ app.put("/updatementorrr", (req, res) => {
   const {username,requestsreceived} = req.body
   var myquery = {username:username}
   var newvalues = {$set:{requestsreceived:requestsreceived}}
+  MentorDetails.updateOne(myquery, newvalues,(err,item) => {
+    if(err){
+      res.send({message:"Error"});
+    }
+    else{
+      res.send({message:"Request sent successfully !"})
+    }
+  })
+});
+
+app.put("/updatementorra", (req, res) => {
+  const {username,requestsaccepted} = req.body
+  var myquery = {username:username}
+  var newvalues = {$set:{requestsaccepted:requestsaccepted}}
   MentorDetails.updateOne(myquery, newvalues,(err,item) => {
     if(err){
       res.send({message:"Error"});
