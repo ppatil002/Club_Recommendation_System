@@ -32,7 +32,7 @@ const StudentCard = (props) => {
                 axios
                 .put("http://localhost:9000/updatementorra",body)
                 .then((res)=>{
-                    alert(res.data.message);
+                    alert("Request Accepted Successfully");
             })
             }
             
@@ -62,9 +62,6 @@ const StudentCard = (props) => {
         <CardActions>
           <Button size="small" onClick={AcceptRequest}>
             Accept Request
-          </Button>
-          <Button size="small" >
-            Accept
           </Button>
         </CardActions>
       </Card>

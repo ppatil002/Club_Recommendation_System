@@ -42,7 +42,7 @@ const Login = () => {
           localStorage.setItem("Password", res.data.password);
           const studenttoken = localStorage.getItem("StudentToken");
           if (studenttoken) {
-            window.location.href='/studentprofile';
+            window.location.href='/studentpersonalform';
           } else {
             alert("Login failed try after sometime");
           }
@@ -64,7 +64,7 @@ const Login = () => {
         >
           <center>
             <Typography variant="h6" gutterBottom>
-              Login Page{" "}
+              Student Login Page{" "}
             </Typography>{" "}
           </center>{" "}
           <Grid container spacing={3}>

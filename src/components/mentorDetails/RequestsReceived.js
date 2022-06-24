@@ -70,7 +70,7 @@ const MentorRequestsreceived = () => {
           })
         ) : (
           <>
-            <div>No passes</div>
+            <div>Click on the button</div>
           </>
         )}
         </Grid>
