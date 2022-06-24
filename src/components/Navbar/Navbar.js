@@ -65,7 +65,7 @@ export default function DrawerAppBar(props) {
             Club Recommender System
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-          <Button  sx={{ color: '#fff' }} onClick={event =>  window.location.href='/studentpersonalform'}>
+          <Button  sx={{ color: '#fff' }} onClick={event =>  window.location.href='/'}>
                 Interest Form
               </Button>
               <Button  sx={{ color: '#fff' }}  onClick={event =>  window.location.href='/clubs-selected'}>

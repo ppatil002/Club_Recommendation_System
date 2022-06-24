@@ -51,6 +51,8 @@ const ProfileCard = (props) => {
   const theme = useTheme();
   const [a,setA] = React.useState(0);
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+  
+  
 
   const descriptionElementRef = React.useRef(null);
   React.useEffect(() => {
@@ -123,6 +125,18 @@ const ProfileCard = (props) => {
           <Button size="small" onClick={handleClickOpen}>
             Send Request
           </Button>
+          
+            {
+              props.info.requestsaccepted.map((items,index) => {
+                if(items===localStorage.getItem("Mis")){
+                  return(
+                    <Typography>Request Accepted</Typography>
+                  )
+                }
+              })
+            }
+
+
         </CardActions>
       </Card>
 

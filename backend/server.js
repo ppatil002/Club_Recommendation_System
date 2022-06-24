@@ -199,6 +199,7 @@ app.put("/updatementorrr", (req, res) => {
 
 app.put("/updatementorra", (req, res) => {
   const {username,requestsaccepted} = req.body
+  console.log(username,requestsaccepted)
   var myquery = {username:username}
   var newvalues = {$set:{requestsaccepted:requestsaccepted}}
   MentorDetails.updateOne(myquery, newvalues,(err,item) => {
