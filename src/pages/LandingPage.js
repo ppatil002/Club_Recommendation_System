@@ -39,7 +39,7 @@ const LandingPage = () => {
             Want to build your Network
           </Fade>
           <Fade bottom delay={2200}>
-            Welcome to UniConnect!
+            Welcome to Club Recommander!
           </Fade>
           <br />
           <br />

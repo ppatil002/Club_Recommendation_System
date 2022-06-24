@@ -27,7 +27,7 @@ function ResumeForm({basic,setBasic,education,setEducation,skill,setSkill,workSa
 
     // State with list of all checked item
   const [checked, setChecked] = useState([]);
-  const checkList = ["ASCI", "CSI", "SDS", "Velociracers","Spandan",'Abhiyanta',"Science club","Satellite club","Mathematics club"];
+  const checkList = ["Abhijaat","ASCI","Athletics", "Arts And Crafts","Basketball","Carrom","Chess","Cricket","CSI","Debate","Delta","Footbal","Fencing","HAM","Imperessions","Mathematics club","MindSpark","NCC","Nemesis","NSS","Octane","Regatta","Satellite club","Science club", "SDS", "Velociracers","Web Team","Yoga","ZEST"];
 
   const [requestsreceived,setRequestsreceived] = useState([]);
   const [requestsaccepted,setRequestsaccepted] = useState([]);

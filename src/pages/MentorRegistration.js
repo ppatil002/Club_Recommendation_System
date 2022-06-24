@@ -175,6 +175,7 @@ const MentorRegister = () => {
                 id="password"
                 name="password"
                 label="Password"
+                type="password"
                 fullWidth
                 variant="standard"
                 value={password}
@@ -188,6 +189,7 @@ const MentorRegister = () => {
                 required
                 id="confirmpassword"
                 name="confirmpassword"
+                type="password"
                 label="Confirm Password"
                 fullWidth
                 variant="standard"

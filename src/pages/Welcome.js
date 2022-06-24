@@ -90,11 +90,12 @@ const WelcomePage = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Mentor
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          The mentor can provide unbiased advice or opinions using their relevant knowledge and experience. 
+          With these insights, the mentee can better understand what steps to take and whether to pursue the idea 
+          or walk away.
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -116,11 +117,11 @@ const WelcomePage = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Student
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          Students who are confused may quickly become frustrated in the classroom if they are pressured to perform. 
+          Finding Collegework difficult, or having problems concentrating in class if others are noisy and disruptive.
           </Typography>
         </CardContent>
       </CardActionArea>

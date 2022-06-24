@@ -99,6 +99,7 @@ const Login = () => {
                 required
                 id="password"
                 name="password"
+                type="password"
                 label="Password"
                 fullWidth
                 variant="standard"
