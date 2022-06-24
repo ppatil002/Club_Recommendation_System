@@ -83,7 +83,7 @@ const HomePage = () => {
                       }}>
                       Our Aim
                     </Typography>
-                    To make college life easier by recommanding the clubs and
+                    To make college life easier by recommending the clubs and
                     help to connect with the right seniors easily
                   </Fade>
                 </Grid>
@@ -103,7 +103,7 @@ const HomePage = () => {
                       What we do
                     </Typography>
                     We analyse the interest you enter and based on that We
-                    recommand the list of clubs and seniors associated with it
+                    recommend the list of clubs and seniors associated with it
                   </Fade>
                 </Grid>
                 <Grid item lg={2}>

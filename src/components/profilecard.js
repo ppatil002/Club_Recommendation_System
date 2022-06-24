@@ -86,7 +86,7 @@ const ProfileCard = (props) => {
   };
 
   const sendRequest = () => {
-    if(1){
+    if(passwordentered===studentpwd){
         const newrequest = [...props.info.requestsreceived];
         if(newrequest.includes(studentmis)){
             alert("Request already sent");
