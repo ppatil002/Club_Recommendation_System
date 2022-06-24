@@ -48,6 +48,15 @@ const ProfileCard = (props) => {
   };
 
   const [open1, setOpen1] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
+  
   const theme = useTheme();
   const [a,setA] = React.useState(0);
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -103,7 +112,7 @@ const ProfileCard = (props) => {
   }
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ minWidth: 200 }}>
         <CardMedia
           component="img"
           height="140"
@@ -130,7 +139,7 @@ const ProfileCard = (props) => {
               props.info.requestsaccepted.map((items,index) => {
                 if(items===localStorage.getItem("Mis")){
                   return(
-                    <Typography>Request Accepted</Typography>
+                    <Button size="small" onClick={handleClickOpen2}>Request Accepted</Button>
                   )
                 }
               })
@@ -179,6 +188,105 @@ const ProfileCard = (props) => {
             Close
           </Button>
         </DialogActions>
+      </Dialog>
+
+      <Dialog
+        fullScreen={fullScreen}
+        open={open2}
+        onClose={handleClose2}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <DialogTitle id="responsive-dialog-title">
+        {props.info.firstname} {props.info.lastname}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            <b>Branch : </b>  {props.info.branch}, <b>Year : </b>{props.info.year} 
+          </DialogContentText>
+          <DialogContentText>
+            <b> From :  </b>{props.info.city}, {props.info.state} 
+          </DialogContentText>
+            <b>Email : </b>{props.info.email}
+          <DialogContentText>
+
+          </DialogContentText>
+            <b>Contact No. : </b>{props.info.contactno}
+          <DialogContentText>
+            
+          </DialogContentText>
+          <DialogContentText>
+            <b>EDUCATION DETAILS</b>
+          </DialogContentText>
+          <DialogContentText>
+            {
+                props.info.education.map((items,index) => {
+                    return(
+                        <>
+                        <DialogContentText>
+                            {index+1} Education Name: {items.educationName}, Education From:{items.educationFrom
+}
+                        </DialogContentText>
+                        </>
+                    )
+                })
+            }
+          </DialogContentText>
+          <DialogContentText>
+            <b>SKILLS</b>
+          </DialogContentText>
+          <DialogContentText>
+            {
+                props.info.skills.map((items,index) => {
+                    return(
+                        <>
+                        <DialogContentText>
+                            {index+1} Skill Name: {items.skillName}, Skill Level:{items.skillStatus
+}
+                        </DialogContentText>
+                        </>
+                    )
+                })
+            }
+        </DialogContentText>
+        
+        <DialogContentText>
+            <b>EXPERIENCE</b>
+          </DialogContentText>
+        <DialogContentText>
+            {
+                props.info.experience.map((items,index) => {
+                    return(
+                        <>
+                        <DialogContentText>
+                            {index+1} Title: {items.ExperienceTitle}, Description:{items.ExperienceDes}
+                        </DialogContentText>
+                        </>
+                    )
+                })
+            }
+        </DialogContentText>
+        <DialogContentText>
+            <b>WORK</b>
+          </DialogContentText>
+        <DialogContentText>
+            {
+                props.info.work.map((items,index) => {
+                    return(
+                        <>
+                        <DialogContentText>
+                            {index+1} Title: {items.wokSampleTitle}, Description:{items.workSampleDes}
+                        </DialogContentText>
+                        </>
+                    )
+                })
+            }
+        </DialogContentText>
+        <DialogActions>
+          <Button autoFocus onClick={handleClose2}>
+            Close
+          </Button>
+        </DialogActions>
+        </DialogContent>
       </Dialog>
 
       {/* Dialog for asking password again */}
