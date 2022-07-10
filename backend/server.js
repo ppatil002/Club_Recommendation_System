@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 const bodyParser = require('body-parser')
+require("dotenv").config();
 
 app.use(bodyParser.json()) // for parsing application/json
 const jwt = require("jsonwebtoken");
