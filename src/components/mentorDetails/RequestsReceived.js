@@ -25,7 +25,7 @@ const MentorRequestsreceived = () => {
             username: username
         }
         axios
-        .post("http://localhost:9000/mrr",body)
+        .post("https://club-recommendation-system.herokuapp.com/mrr",body)
         .then((res)=>{
             setSel(res.data.requestsreceived);
             setAcc(res.data.requestsaccepted);
@@ -36,7 +36,7 @@ const MentorRequestsreceived = () => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:9000/studentlist")
+        .get("https://club-recommendation-system.herokuapp.com/studentlist")
         .then((res) => setStudentlist(res.data))
           .catch((error) => console.log(error));
       },[]);

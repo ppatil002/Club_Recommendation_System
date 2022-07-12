@@ -31,7 +31,7 @@ const StudentNavbar = () => {
  
   useEffect(() => {
     axios
-      .get("http://localhost:9000/mentorlist")
+      .get("https://club-recommendation-system.herokuapp.com/mentorlist")
       .then((res) => setMentorlist(res.data))
       .catch((error) => console.log(error));
   }, []);
