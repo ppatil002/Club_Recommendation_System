@@ -33,7 +33,7 @@ const Login = () => {
             password: password
         }
         axios
-      .post("http://localhost:9000/userlogin", body)
+      .post("/api/userlogin", body)
       .then((res) => {
         alert(res.data.message);
         if (res.data.message === "Login successful !!") {

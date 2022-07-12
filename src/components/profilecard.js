@@ -98,7 +98,7 @@ const ProfileCard = (props) => {
                 username: props.info.username
             }
             axios
-            .put("http://localhost:9000/updatementorrr",body)
+            .put("/api/updatementorrr",body)
             .then((res)=>{
                 alert(res.data.message);
         })
