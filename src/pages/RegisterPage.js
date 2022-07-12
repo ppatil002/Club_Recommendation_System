@@ -66,7 +66,7 @@ const Register = () => {
         branch: branch,
         year: year
       };
-      axios.post("/api/register", body).then((res) => {
+      axios.post("http://localhost:9000/register", body).then((res) => {
         alert(res.data.message);
         window.location.href = "/studentlogin"
       });

@@ -25,7 +25,7 @@ const MentorRequestsaccepted = () => {
             username: username
         }
         axios
-        .post("/api/mrr",body)
+        .post("http://localhost:9000/mrr",body)
         .then((res)=>{
             setSel(res.data.requestsreceived);
             setAcc(res.data.requestsaccepted);
@@ -36,7 +36,7 @@ const MentorRequestsaccepted = () => {
 
     useEffect(() => {
         axios
-        .get("/api/studentlist")
+        .get("http://localhost:9000/studentlist")
         .then((res) => setStudentlist(res.data))
           .catch((error) => console.log(error));
       },[]);

@@ -33,7 +33,7 @@ const MentorLogin = () => {
             password: password
         }
         axios
-      .post("/api/mentorlogin", body)
+      .post("http://localhost:9000/mentorlogin", body)
       .then((res) => {
         alert(res.data.message);
         if (res.data.message === "Mentor Login Successful") {

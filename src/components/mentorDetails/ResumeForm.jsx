@@ -192,7 +192,7 @@ const submit = (e) => {
             requestsaccepted : requestsaccepted,
             requestsreceived : requestsreceived,
         };
-        axios.post("/api/mentorregister", body).then((res) => {
+        axios.post("http://localhost:9000/mentorregister", body).then((res) => {
             alert(res.data.message);
             if(res.data.message==="Mentor Successfully registered"){
                 localStorage.clear();

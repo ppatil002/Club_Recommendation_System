@@ -31,7 +31,7 @@ const StudentNavbar = () => {
  
   useEffect(() => {
     axios
-      .get("/api/mentorlist")
+      .get("http://localhost:9000/mentorlist")
       .then((res) => setMentorlist(res.data))
       .catch((error) => console.log(error));
   }, []);

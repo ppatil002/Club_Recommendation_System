@@ -7,16 +7,8 @@ app.use(cors());
 const bodyParser = require('body-parser')
 require("dotenv").config();
 
-
 app.use(bodyParser.json()) // for parsing application/json
 const jwt = require("jsonwebtoken");
-
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-  app.use(express.static('build'));
-  app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/index.html'));
-  });
- }
 
 // Connect to mongodb
 const URI = process.env.MONGODB_URL;
@@ -37,7 +29,7 @@ const MentorDetails = require("./Schema/Mentor");
 
 const Club = require("./Schema/Clubs");
 
-app.post("/api/clubdetails",(req,res) => {
+app.post("/clubdetails",(req,res) => {
   const {name,information,why} = req.body;
 
   Club.findOne({ name : name}, (err, user) => {
@@ -58,7 +50,7 @@ app.post("/api/clubdetails",(req,res) => {
   })
 })
 
-app.post("/api/mrr",(req,res) => {
+app.post("/mrr",(req,res) => {
   const {username} = req.body
   MentorDetails.findOne({username:username},(err,mentor) => {
     if(mentor){
@@ -75,7 +67,7 @@ app.post("/api/mrr",(req,res) => {
   })
 })
 
-app.post("/api/mra",(req,res) => {
+app.post("/mra",(req,res) => {
   const {username} = req.body
   MentorDetails.findOne({username:username},(err,mentor) => {
     if(mentor){
@@ -93,7 +85,7 @@ app.post("/api/mra",(req,res) => {
 })
 
 
-app.post("/api/mentorlogin",(req,res) => {
+app.post("/mentorlogin",(req,res) => {
   const { username, password} = req.body;
 
   MentorDetails.findOne({username: username},(err, existingmentor) => {
@@ -125,25 +117,25 @@ app.post("/api/mentorlogin",(req,res) => {
 })
 
 //For getting list of all mentors
-app.get("/api/mentorlist",(req,res) => {
+app.get("/mentorlist",(req,res) => {
   MentorDetails.find()
    .then((mentor) => res.json(mentor))
    .catch((err) => res.status(400).res.json(`Error:${err}`))
 })
 
-app.get("/api/clublist",(req,res) => {
+app.get("/clublist",(req,res) => {
   Club.find()
   .then((club) => res.json(club))
    .catch((err) => res.status(400).res.json(`Error:${err}`))
 })
 
-app.get("/api/studentlist",(req,res) => {
+app.get("/studentlist",(req,res) => {
   User.find()
   .then((user) => res.json(user))
    .catch((err) => res.status(400).res.json(`Error:${err}`))
 })
 
-app.post("/api/userlogin", (req, res) => {
+app.post("/userlogin", (req, res) => {
     const { mis, password, username } = req.body;
   
     User.findOne({ mis: mis }, (err, existinguser) => {
@@ -172,7 +164,7 @@ app.post("/api/userlogin", (req, res) => {
     });
   });
   
-app.post("/api/register", (req,res) => {
+app.post("/register", (req,res) => {
   const {mis, password, username, firstname, lastname, year, branch} = req.body
   User.findOne({ mis : mis}, (err, user) => {
     if(user) {
@@ -192,7 +184,7 @@ app.post("/api/register", (req,res) => {
   })
 })
 
-app.put("/api/updatementorrr", (req, res) => {
+app.put("/updatementorrr", (req, res) => {
   const {username,requestsreceived} = req.body
   var myquery = {username:username}
   var newvalues = {$set:{requestsreceived:requestsreceived}}
@@ -206,7 +198,7 @@ app.put("/api/updatementorrr", (req, res) => {
   })
 });
 
-app.put("/api/updatementorra", (req, res) => {
+app.put("/updatementorra", (req, res) => {
   const {username,requestsaccepted} = req.body
   console.log(username,requestsaccepted)
   var myquery = {username:username}
@@ -221,7 +213,7 @@ app.put("/api/updatementorra", (req, res) => {
   })
 });
 
-app.post("/api/mentorregister",(req,res) => {
+app.post("/mentorregister",(req,res) => {
   const {password,username,firstname,city,email,state,lastname,year,branch,education,experience,skills,clubs,contactno,work,requestsreceived,requestsaccepted} = req.body
   MentorDetails.findOne({username:username},(err,mentor) => {
     if(mentor){
@@ -241,7 +233,7 @@ app.post("/api/mentorregister",(req,res) => {
   })
 })
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
     res.send("This is Club Recommendation System app");
 });
 const port = process.env.PORT || 9000;

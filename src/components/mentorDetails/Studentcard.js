@@ -37,7 +37,7 @@ const StudentCard = (props) => {
                 }
                 console.log(body)
                 axios
-                .put("/api/updatementorra",body)
+                .put("http://localhost:9000/updatementorra",body)
                 .then((res)=>{
                     alert("Request Accepted Successfully");
             })

@@ -18,7 +18,7 @@ const ClubList = () => {
 
   useEffect(() => {
     axios
-    .get("/api/clublist")
+    .get("http://localhost:9000/clublist")
     .then((res) => setClublist(res.data))
       .catch((error) => console.log(error));
   },[]);
