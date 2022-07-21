@@ -60,7 +60,7 @@ const MentorRecommendation = () => {
             if(selmentor.includes(items.username)){
                 return(
                     <>
-                    <Grid item xs={6} md={6}>
+                    <Grid item xs={2} sm={4} md={4}>
                 <ProfileCard info={items}/>
                   </Grid>
                     </>

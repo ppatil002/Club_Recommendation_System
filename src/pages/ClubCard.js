@@ -37,7 +37,7 @@ const ClubCard = (props) => {
 
   return (
     <>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 345, minHeight: 400, marginBottom: 10}}>
         <CardMedia
           component="img"
           height="140"
