@@ -20,9 +20,6 @@ A system built for students of COEP, which suggests list of clubs according to i
 <p>
   <a href="https://club-recommendation-system.netlify.app/">Website Demo</a>
 </p>
-<p>
-  Backend is stored on MongoDB Atlas AWS Cloud
-</p>
 
 ## Installation
 
@@ -57,9 +54,10 @@ A system built for students of COEP, which suggests list of clubs according to i
 * Then you can send request to the mentor you want to connect to.
 * After that when the mentor accepts your invitation you get all the contact details of your mentor !
 
-## Screebshots : 
+## Screenshots : 
 * Interests Form Page
 ![InterestsForm](https://user-images.githubusercontent.com/87142754/180200852-1b2319fa-f57f-43f9-b2e1-4120e35843d1.jpeg)
+
 * List of Clubs recommended according to your interests
 ![Clubs_Selected](https://user-images.githubusercontent.com/87142754/180200888-46d75006-c92a-4f6b-b1d4-c9da82691256.jpeg)
 * List of Mentors associated with that Club
